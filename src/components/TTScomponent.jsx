@@ -1,33 +1,5 @@
 import { useState, useEffect } from "react";
 
-// const TTSComponent = () => {
-//   const [textToSpeak, setTextToSpeak] = useState("");
-
-// useEffect(() => {
-//   // Listen for messages from the background script
-//   chrome.runtime.onMessage.addListener((message) => {
-//     console.log(message.text);
-//     if (message.type === "TTS_TEXT") {
-//       setTextToSpeak(message.text);
-//       handleSpeak(message.text); // Call TTS function
-//     }
-//   });
-// }, []);
-
-//   const handleSpeak = (text) => {
-//     const utterance = new SpeechSynthesisUtterance(text);
-//     window.speechSynthesis.speak(utterance);
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={() => handleSpeak(textToSpeak)}>
-//         Read Selected Text
-//       </button>
-//     </div>
-//   );
-// };
-
 // export default TTSComponent;
 
 const TTSComponent = () => {
@@ -51,29 +23,6 @@ const TTSComponent = () => {
     // Clean up the port when the component unmounts
     return () => port.disconnect();
   }, []);
-
-  // useEffect(() => {
-  //   const handleSelectionChange = () => {
-  //     const selection = window.getSelection();
-  //     const text = selection.toString().trim();
-  //     // console.log("Selection change event triggered!");
-  //     // console.log("Selected Text:", text);
-  //     setSelectedText(text);
-  //   };
-
-  //   document.addEventListener("selectionchange", handleSelectionChange);
-  //   return () => {
-  //     document.removeEventListener("selectionchange", handleSelectionChange);
-  //   };
-
-  //   // chrome.runtime.onMessage.addListener((message) => {
-  //   //     console.log(message.text);
-  //   //     if (message.type === "TTS_TEXT") {
-  //   //       setSelectedText(message.text);
-  //   //       // handleSpeak(message.text); // Call TTS function
-  //   //     }
-  //   //   });
-  // }, []);
 
   // Start speaking
 
