@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-
-// export default TTSComponent;
+import "../index.css";
 
 const TTSComponent = () => {
   const [selectedText, setSelectedText] = useState("");
@@ -14,7 +13,6 @@ const TTSComponent = () => {
 
     // Listen for messages from the background script through the port
     port.onMessage.addListener((message) => {
-      console.log(message.text);
       if (message.type === "TTS_TEXT") {
         setSelectedText(message.text);
       }
@@ -28,7 +26,6 @@ const TTSComponent = () => {
 
   const handleSpeak = () => {
     if (selectedText) {
-      console.log("Speaking text:", selectedText);
       chrome.tts.speak(
         selectedText,
         {
@@ -61,38 +58,17 @@ const TTSComponent = () => {
 
   return (
     <div style={{ padding: "10px" }}>
-      <h2>Text-to-Speech</h2>
-      <div style={{ fontStyle: "italic", marginBottom: "10px" }}>
-        {"Highlight text on the page to read it aloud."}
-      </div>
       <button
         onClick={handleSpeak}
         disabled={isSpeaking || !selectedText}
-        style={{
-          width: "100%",
-          padding: "10px",
-          backgroundColor: "#4CAF50",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
+        className="shared-button green-button"
       >
         Speak
       </button>
       <button
         onClick={handleStop}
         disabled={!isSpeaking}
-        style={{
-          width: "100%",
-          padding: "10px",
-          marginTop: "5px",
-          backgroundColor: "#f44336",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
+        className="shared-button red-button"
       >
         Stop
       </button>
