@@ -1,6 +1,5 @@
-// src/components/DyslexiaRuler.js
 import React, { useState } from "react";
-import "../index.css"; // Add your CSS for the popup
+import "../index.css";
 
 function DyslexiaRuler() {
   const [isRulerActive, setIsRulerActive] = useState(false);
@@ -9,21 +8,13 @@ function DyslexiaRuler() {
   const toggleRuler = () => {
     setIsRulerActive((prevState) => !prevState);
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.scripting.executeScript({
-        target: { tabId: tabs[0].id },
-        func: toggleRulerInContentScript,
-      });
+        chrome.runtime.sendMessage(tabs[0].id, { action: "toggleRuler" });
     });
-  };
-
-  // Function to send a message to content script to toggle the ruler visibility
-  const toggleRulerInContentScript = () => {
-    chrome.runtime.sendMessage({ action: "toggleRuler" });
   };
 
   return (
     <div className="popup-container">
-      <h3>Dyslexia Ruler</h3>
+      <h3 style={{color: "white"}} >Dyslexia Ruler</h3>
       <button
         onClick={toggleRuler}
         className={`shared-button ${

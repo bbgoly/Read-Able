@@ -1,4 +1,4 @@
-document.addEventListener("mouseup", () => {
+document.addEventListener("selectionchange", () => { // mouseup
   const selectedText = window.getSelection().toString().trim();
   if (selectedText) {
     // Send the selected text to the background script
@@ -83,20 +83,8 @@ chrome.runtime.onMessage.addListener((message) => {
     toggleReadingModeInPage(message.isReadingMode);
   }
 });
-// Create and inject the ruler element into the webpage
-const rulerElement = document.createElement("div");
-rulerElement.classList.add("dyslexia-ruler");
-document.body.appendChild(rulerElement);
 
-// Set initial styles for the ruler
-rulerElement.style.position = "absolute";
-rulerElement.style.height = "2px";
-rulerElement.style.backgroundColor = "#FF0000";
-rulerElement.style.width = "100%";
-rulerElement.style.zIndex = "1000";
-
-// Initially hide the ruler
-rulerElement.style.display = "none";
+let rulerElement = null;
 
 // Add mousemove event listener to move the ruler
 const handleMouseMove = (event) => {
@@ -105,15 +93,33 @@ const handleMouseMove = (event) => {
   }
 };
 
-document.addEventListener("mousemove", handleMouseMove);
-
 // Listen for messages to toggle ruler visibility
 chrome.runtime.onMessage.addListener((message) => {
+    console.log("ruler toggled")
   if (message.action === "toggleRuler") {
-    if (rulerElement.style.display === "none") {
+    rulerElement = document.getElementById("dyslexia-ruler");
+
+    if (!rulerElement) {
+        rulerElement = document.createElement("div");
+        rulerElement.classList.add("dyslexia-ruler");
+
+        // Set initial styles for the ruler
+        rulerElement.style.position = "absolute";
+        rulerElement.style.height = "2px";
+        rulerElement.style.backgroundColor = "#FF0000";
+        rulerElement.style.width = "100%";
+        rulerElement.style.zIndex = "1000";
+
+        // Initially hide the ruler
+        rulerElement.style.display = "none";
+        document.body.appendChild(rulerElement);
+        document.addEventListener("mousemove", handleMouseMove);
+    }
+
+    if (rulerElement.style.display === "none" || rulerElement.style.display === "") {
       rulerElement.style.display = "block";
     } else {
-      rulerElement.style.display = "none";
+      document.body.removeChild(rulerElement);
     }
   }
 });
