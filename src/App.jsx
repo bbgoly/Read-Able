@@ -1,9 +1,7 @@
-function App() {
-  return (
-	<>
+import TTSComponent from "./components/TTScomponent";
 
-	</>
-  )
+function App() {
+  return <TTSComponent />;
 }
 
-export default App
+export default App;
