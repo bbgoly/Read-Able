@@ -1,34 +1,34 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     viteStaticCopy({
-        targets: [
-            {
-                src: 'public/manifest.json',
-                dest: '.'
-            },
-            {
-                src: './src/scripts/background/',
-                dest: '.'
-            },
-            /*{
-                src: './src/scripts/content/',
-                dest: '.'
-            }*/
-        ]
-    })
+      targets: [
+        {
+          src: "public/manifest.json",
+          dest: ".",
+        },
+        {
+          src: "./src/scripts/background.js",
+          dest: ".",
+        },
+        {
+          src: "./src/scripts/content-script.js",
+          dest: ".",
+        },
+      ],
+    }),
   ],
   build: {
-    outDir: 'build',
+    outDir: "build",
     rollupOptions: {
-        input: {
-            main: './index.html',
-        }
-    }
-  }
-})
+      input: {
+        main: "./index.html",
+      },
+    },
+  },
+});
