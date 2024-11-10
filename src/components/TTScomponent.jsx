@@ -1,34 +1,5 @@
 import { useState, useEffect } from "react";
-
-// const TTSComponent = () => {
-//   const [textToSpeak, setTextToSpeak] = useState("");
-
-// useEffect(() => {
-//   // Listen for messages from the background script
-//   chrome.runtime.onMessage.addListener((message) => {
-//     console.log(message.text);
-//     if (message.type === "TTS_TEXT") {
-//       setTextToSpeak(message.text);
-//       handleSpeak(message.text); // Call TTS function
-//     }
-//   });
-// }, []);
-
-//   const handleSpeak = (text) => {
-//     const utterance = new SpeechSynthesisUtterance(text);
-//     window.speechSynthesis.speak(utterance);
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={() => handleSpeak(textToSpeak)}>
-//         Read Selected Text
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default TTSComponent;
+import "../index.css";
 
 const TTSComponent = () => {
   const [selectedText, setSelectedText] = useState("");
@@ -42,7 +13,6 @@ const TTSComponent = () => {
 
     // Listen for messages from the background script through the port
     port.onMessage.addListener((message) => {
-      console.log(message.text);
       if (message.type === "TTS_TEXT") {
         setSelectedText(message.text);
       }
@@ -52,34 +22,10 @@ const TTSComponent = () => {
     return () => port.disconnect();
   }, []);
 
-  // useEffect(() => {
-  //   const handleSelectionChange = () => {
-  //     const selection = window.getSelection();
-  //     const text = selection.toString().trim();
-  //     // console.log("Selection change event triggered!");
-  //     // console.log("Selected Text:", text);
-  //     setSelectedText(text);
-  //   };
-
-  //   document.addEventListener("selectionchange", handleSelectionChange);
-  //   return () => {
-  //     document.removeEventListener("selectionchange", handleSelectionChange);
-  //   };
-
-  //   // chrome.runtime.onMessage.addListener((message) => {
-  //   //     console.log(message.text);
-  //   //     if (message.type === "TTS_TEXT") {
-  //   //       setSelectedText(message.text);
-  //   //       // handleSpeak(message.text); // Call TTS function
-  //   //     }
-  //   //   });
-  // }, []);
-
   // Start speaking
 
   const handleSpeak = () => {
     if (selectedText) {
-      console.log("Speaking text:", selectedText);
       chrome.tts.speak(
         selectedText,
         {
@@ -119,31 +65,14 @@ const TTSComponent = () => {
       <button
         onClick={handleSpeak}
         disabled={isSpeaking || !selectedText}
-        style={{
-          width: "100%",
-          padding: "10px",
-          backgroundColor: "#4CAF50",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
+        className="shared-button green-button"
       >
         Speak
       </button>
       <button
         onClick={handleStop}
         disabled={!isSpeaking}
-        style={{
-          width: "100%",
-          padding: "10px",
-          marginTop: "5px",
-          backgroundColor: "#f44336",
-          color: "white",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
+        className="shared-button red-button"
       >
         Stop
       </button>

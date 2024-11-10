@@ -24,7 +24,8 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content-script.js"]
+      "js": ["content-script.js"],
+      "css": ["content.css"]
     }
   ],
   "host_permissions": ["<all_urls>"]
