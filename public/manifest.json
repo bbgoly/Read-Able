@@ -3,11 +3,6 @@
   "name": "Read-Able",
   "description": "",
   "version": "0.1.0",
-  "icons": {
-    "16": "vite.svg",
-    "48": "vite.svg",
-    "128": "vite.svg"
-  },
   "action": {
     "default_title": "Click to open side panel"
   },
