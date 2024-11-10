@@ -1,21 +1,35 @@
 {
-    "manifest_version": 3,
-    "name": "Read-Able",
-    "description": "",
-    "version": "0.1.0",
-    "icons": {
-        "16": "vite.svg",
-        "48": "vite.svg",
-        "128": "vite.svg"
-    },
-    "background": {
-        "service-worker": "background/service-worker.js"
-    },
-    "action": {
-        "default_title": "Click to open side panel"
-    },
-    "side_panel": {
-        "default_path": "index.html"
-    },
-    "permissions": ["scripting", "activeTab", "sidePanel", "storage", "tabs"]
+  "manifest_version": 3,
+  "name": "Read-Able",
+  "description": "",
+  "version": "0.1.0",
+  "icons": {
+    "16": "vite.svg",
+    "48": "vite.svg",
+    "128": "vite.svg"
+  },
+  "action": {
+    "default_title": "Click to open side panel"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "sidePanel",
+    "storage",
+    "tabs",
+    "tts",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"]
+    }
+  ]
 }
