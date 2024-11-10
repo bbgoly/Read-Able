@@ -17,7 +17,7 @@ export default defineConfig({
           dest: ".",
         },
         {
-          src: "./src/scripts/content/content-script.js",
+          src: "./src/scripts/content-script.js",
           dest: ".",
         },
       ],
