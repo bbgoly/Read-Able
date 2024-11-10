@@ -13,13 +13,13 @@ export default defineConfig({
                 dest: '.'
             },
             {
-                src: './src/scripts/background/',
+                src: 'src/scripts/background/',
                 dest: '.'
             },
-            {
-                src: './src/scripts/content/',
-                dest: '.'
-            }
+            // {
+            //     src: './src/scripts/content/',
+            //     dest: '.'
+            // }
         ]
     })
   ],
