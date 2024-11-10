@@ -7,17 +7,27 @@ export default defineConfig({
   plugins: [
     react(),
     viteStaticCopy({
-        targets: [{
-            src: 'public/manifest.json',
-            dest: '.'
-        }]
+        targets: [
+            {
+                src: 'public/manifest.json',
+                dest: '.'
+            },
+            {
+                src: './src/scripts/background/',
+                dest: '.'
+            },
+            {
+                src: './src/scripts/content/',
+                dest: '.'
+            }
+        ]
     })
   ],
   build: {
     outDir: 'build',
     rollupOptions: {
         input: {
-            main: './index.html'
+            main: './index.html',
         }
     }
   }

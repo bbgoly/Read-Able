@@ -8,8 +8,14 @@
         "48": "vite.svg",
         "128": "vite.svg"
     },
+    "background": {
+        "service-worker": "background/service-worker.js"
+    },
+    "action": {
+        "default_title": "Click to open side panel"
+    },
     "side_panel": {
         "default_path": "index.html"
     },
-    "permissions": ["sidePanel", "storage", "tabs"]
+    "permissions": ["scripting", "activeTab", "sidePanel", "storage", "tabs"]
 }
