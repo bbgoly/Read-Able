@@ -1,6 +1,7 @@
 import TTSComponent from "./components/TTScomponent";
 import FontChangeComponent from "./components/FontChangeComponent";
-import FontSizeComponent from"./components/FontSizeComponent";
+import FontSizeComponent from "./components/FontSizeComponent";
+import ReadingModeComponent from "./components/ReadingModeComponent";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
   		<TTSComponent />
 		<FontChangeComponent/>
 		<FontSizeComponent/>
+		<ReadingModeComponent/>
   	</>
   );
 }

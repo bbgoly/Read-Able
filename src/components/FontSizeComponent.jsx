@@ -14,7 +14,7 @@ const FontSizeChangeComponent = () => {
         chrome.scripting.executeScript(
           {
             target: { tabId: activeTab.id },
-            files: ['content-script.js'],
+            files: ['content-script.js']
           },
           () => {
             // Send message to the content script with the new font size
