@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Read-Able",
+    "description": "",
+    "version": "0.1.0",
+    "icons": {
+        "16": "vite.svg",
+        "48": "vite.svg",
+        "128": "vite.svg"
+    },
+    "side_panel": {
+        "default_path": "index.html"
+    },
+    "permissions": ["sidePanel", "storage", "tabs"]
+}
