@@ -1,7 +1,13 @@
 import TTSComponent from "./components/TTScomponent";
+import TaskManager from "./components/TaskManager";
 
 function App() {
-  return <TTSComponent />;
+  return (
+    <>
+        <TaskManager />
+        <TTSComponent />
+    </>
+  )
 }
 
 export default App;

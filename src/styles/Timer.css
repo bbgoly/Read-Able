@@ -1,0 +1,21 @@
+#timerDisplay {
+    font-size: 200%;
+    margin-bottom: 20px;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#timerButton {
+    background-color: #ddd;
+    color: #000;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+    margin: 0 5px;
+}

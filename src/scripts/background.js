@@ -1,4 +1,3 @@
-// background.js
 let ttsPort = null;
 
 chrome.runtime.onConnect.addListener((port) => {

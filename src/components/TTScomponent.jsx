@@ -112,8 +112,8 @@ const TTSComponent = () => {
 
   return (
     <div style={{ padding: "10px" }}>
-      <h2>Text-to-Speech</h2>
-      <div style={{ fontStyle: "italic", marginBottom: "10px" }}>
+      <h2 style={{color: "white"}} >Text-to-Speech</h2>
+      <div style={{ color: "white", marginBottom: "10px" }}>
         {"Highlight text on the page to read it aloud."}
       </div>
       <button
