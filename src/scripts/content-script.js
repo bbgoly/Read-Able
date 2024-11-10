@@ -11,8 +11,9 @@ document.addEventListener("mouseup", () => {
 
 // FontChange
 function applyFont(font) {
-  document.body.style.fontFamily = font;
-  document.documentElement.style.fontFamily = font;
+  document.querySelectorAll("*").forEach((element) => {
+    element.style.fontFamily = font;
+  });
 }
 // Listen for messages from the popup to change the font
 chrome.runtime.onMessage.addListener((message) => {
@@ -21,3 +22,21 @@ chrome.runtime.onMessage.addListener((message) => {
   }
 });
 
+//FontSize
+
+function applyFontSize(fontSize) {
+  const style = document.createElement("style");
+  style.innerHTML = `
+    * {
+      font-size: ${fontSize} !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// Listen for messages to change the font size
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.action === "changeFontSize") {
+    applyFontSize(message.fontSize);
+  }
+});

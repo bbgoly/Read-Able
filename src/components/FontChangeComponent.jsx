@@ -27,11 +27,6 @@ const FontChangeComponent = () => {
 
     return (
         <>
-
-        <p className="read-the-docs">
-            Hello world!
-        </p>
-
         <div className="font-changer">
             <label htmlFor="font-select">Select Font: </label>
             <select value={font} onChange={changeFont}>
